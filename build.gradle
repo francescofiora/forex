@@ -1,0 +1,70 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+buildscript {
+  ext {
+    springBootVersion = property('springboot.version')
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+eclipse {
+  wtp {
+    component {
+      contextPath = 'forex/api'
+    }
+  }
+}
+
+def commonsCollectionsVersion = property('commons-collections.version')
+def commonsLangVersion = property('commons-lang3.version')
+def swaggerVersion = property('swagger.version')
+
+dependencies {
+
+  compile('org.springframework.boot:spring-boot-starter-web',
+		'org.springframework.boot:spring-boot-starter-validation',
+		'org.springframework.boot:spring-boot-starter-test',
+		'org.springframework.boot:spring-boot-devtools')
+
+  providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+
+  compile("org.apache.commons:commons-lang3:$commonsLangVersion")
+  compile("org.apache.commons:commons-collections4:$commonsCollectionsVersion")
+  compile("io.springfox:springfox-swagger2:$swaggerVersion")
+  compile("io.springfox:springfox-swagger-ui:$swaggerVersion")
+
+  testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+sourceSets {
+  main {
+    java {
+      srcDirs 'java'
+    }
+    resources {
+      srcDirs 'resources'
+    }
+  }
+  test {
+    java {
+      srcDirs 'java'
+    }
+  }
+}
