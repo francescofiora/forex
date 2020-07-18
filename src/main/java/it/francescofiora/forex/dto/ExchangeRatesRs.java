@@ -1,8 +1,10 @@
-package it.francescofiora.forex.model;
+package it.francescofiora.forex.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -13,12 +15,16 @@ import javax.validation.Valid;
  */
 @Validated
 public class ExchangeRatesRs   {
+
+	@Schema(example = "1")
   @JsonProperty("page")
   private Integer page = null;
 
+	@Schema(example = "1")
   @JsonProperty("item")
   private Integer item = null;
 
+	@Schema(example = "1")
   @JsonProperty("totalItem")
   private Integer totalItem = null;
 
@@ -35,7 +41,6 @@ public class ExchangeRatesRs   {
    * Get page
    * @return page
   **/
-  @ApiModelProperty(example = "1", value = "")
   public Integer getPage() {
     return page;
   }
@@ -53,7 +58,6 @@ public class ExchangeRatesRs   {
    * Get item
    * @return item
   **/
-  @ApiModelProperty(example = "1", value = "")
   public Integer getItem() {
     return item;
   }
@@ -71,7 +75,6 @@ public class ExchangeRatesRs   {
    * Get totalItem
    * @return totalItem
   **/
-  @ApiModelProperty(example = "1", value = "")
   public Integer getTotalItem() {
     return totalItem;
   }
@@ -87,7 +90,7 @@ public class ExchangeRatesRs   {
 
   public ExchangeRatesRs addExchangeRatesItem(ExchangeRateType exchangeRatesItem) {
     if (this.exchangeRates == null) {
-      this.exchangeRates = new ArrayList<ExchangeRateType>();
+      this.exchangeRates = new ArrayList<>();
     }
     this.exchangeRates.add(exchangeRatesItem);
     return this;
@@ -97,7 +100,6 @@ public class ExchangeRatesRs   {
    * Get exchangeRates
    * @return exchangeRates
   **/
-  @ApiModelProperty(value = "")
   @Valid
   public List<ExchangeRateType> getExchangeRates() {
     return exchangeRates;

@@ -1,10 +1,10 @@
-package it.francescofiora.forex.manager;
+package it.francescofiora.forex.service;
 
-import it.francescofiora.forex.model.ExchangeRateType;
-import it.francescofiora.forex.model.ExchangeRatesRq;
-import it.francescofiora.forex.model.ExchangeRatesRs;
+import it.francescofiora.forex.dto.ExchangeRateType;
+import it.francescofiora.forex.dto.ExchangeRatesRq;
+import it.francescofiora.forex.dto.ExchangeRatesRs;
 
-public interface ExchangeRateManager {
+public interface ExchangeRateService {
 
   /**
    * add ExchangeRate.

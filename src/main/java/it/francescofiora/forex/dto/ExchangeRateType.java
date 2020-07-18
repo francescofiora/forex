@@ -1,8 +1,10 @@
-package it.francescofiora.forex.model;
+package it.francescofiora.forex.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -12,21 +14,28 @@ import javax.validation.constraints.NotNull;
  */
 @Validated
 public class ExchangeRateType   {
+
+  @Schema(description = "Unique identifier", example = "EUR-USD-2018-11-17T161203625Z", required = true)
   @JsonProperty("id")
   private String id = null;
 
+  @Schema(example = "/exchangerates/EUR-USD-2018-11-17T161203625Z", required = true)
   @JsonProperty("uri")
   private String uri = null;
 
+  @Schema(example = "EUR", required = true)
   @JsonProperty("valutaFrom")
   private String valutaFrom = null;
 
+  @Schema(example = "USD", required = true)
   @JsonProperty("valutaTo")
   private String valutaTo = null;
 
+  @Schema(example = "1.14193", required = true)
   @JsonProperty("exchangeRate")
   private Double exchangeRate = null;
 
+  @Schema(example = "2018-11-17T16:12:03625Z", required = true)
   @JsonProperty("exchangeData")
   private String exchangeData = null;
 
@@ -39,7 +48,6 @@ public class ExchangeRateType   {
    * Get id
    * @return id
   **/
-  @ApiModelProperty(example = "EUR-USD-2018-11-17T161203625Z", required = true, value = "")
   @NotNull
   @Valid
   public String getId() {
@@ -59,7 +67,6 @@ public class ExchangeRateType   {
    * Get uri
    * @return uri
   **/
-  @ApiModelProperty(example = "/exchangerates/EUR-USD-2018-11-17T161203625Z", required = true, value = "")
   @NotNull
   public String getUri() {
     return uri;
@@ -78,7 +85,6 @@ public class ExchangeRateType   {
    * Get valutaFrom
    * @return valutaFrom
   **/
-  @ApiModelProperty(example = "EUR", required = true, value = "")
   @NotNull
   public String getValutaFrom() {
     return valutaFrom;
@@ -97,7 +103,6 @@ public class ExchangeRateType   {
    * Get valutaTo
    * @return valutaTo
   **/
-  @ApiModelProperty(example = "USD", required = true, value = "")
   @NotNull
   public String getValutaTo() {
     return valutaTo;
@@ -116,7 +121,6 @@ public class ExchangeRateType   {
    * Get exchangeRate
    * @return exchangeRate
   **/
-  @ApiModelProperty(example = "1.14193", required = true, value = "")
   @NotNull
   public Double getExchangeRate() {
     return exchangeRate;
@@ -135,7 +139,6 @@ public class ExchangeRateType   {
    * Get exchangeData
    * @return exchangeData
   **/
-  @ApiModelProperty(example = "2018-11-17T16:12:03625Z", required = true, value = "")
   @NotNull
   @Valid
   public String getExchangeData() {

@@ -1,4 +1,4 @@
-package it.francescofiora.forex.rest;
+package it.francescofiora.forex.web.api;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -11,10 +11,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import it.francescofiora.forex.manager.ExchangeRateManager;
-import it.francescofiora.forex.model.ExchangeRateType;
-import it.francescofiora.forex.model.ExchangeRatesRq;
-import it.francescofiora.forex.model.ExchangeRatesRs;
+import it.francescofiora.forex.dto.ExchangeRateType;
+import it.francescofiora.forex.dto.ExchangeRatesRq;
+import it.francescofiora.forex.dto.ExchangeRatesRs;
+import it.francescofiora.forex.service.ExchangeRateService;
 
 import java.net.URI;
 
@@ -27,8 +27,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = ExchangeRateRest.class)
-public class ExchangeRateRestTest {
+@WebMvcTest(controllers = ExchangeRateApi.class)
+public class ExchangeRateApiTest {
 
   private static final String CODE = "CODE";
   private static final String EXCHANGERATES_URI = "/exchangerates";
@@ -38,7 +38,7 @@ public class ExchangeRateRestTest {
   private MockMvc mvc;
 
   @MockBean
-  private ExchangeRateManager exchangeRateManager;
+  private ExchangeRateService exchangeRateService;
 
   @Autowired
   private ObjectMapper mapper;
@@ -53,7 +53,7 @@ public class ExchangeRateRestTest {
 
   @Test
   public void testSearchExchangeRates() throws Exception {
-    given(exchangeRateManager.searchExchangeRates(anyString(), anyString(), anyString(), anyString(),
+    given(exchangeRateService.searchExchangeRates(anyString(), anyString(), anyString(), anyString(),
         anyInt(), anyInt()))
       .willReturn(new ExchangeRatesRs());
 
@@ -63,7 +63,7 @@ public class ExchangeRateRestTest {
 
   @Test
   public void testSearchExchangeRate() throws Exception {
-    given(exchangeRateManager.searchExchangeRate(anyString()))
+    given(exchangeRateService.searchExchangeRate(anyString()))
       .willReturn(new ExchangeRateType());
 
     mvc.perform(get(EXCHANGERATES_ID_URI, CODE))
