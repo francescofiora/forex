@@ -1,12 +1,23 @@
 # forex
-Simple (Spring Boot + OpenApi) Rest Api project.
-For simplicity, a CRUD operation is offered with Mock result.
+A Simple Rest Api project.
+This tutorial is a starting point for (Spring Boot 2.3 + OpenApi 3.0).
+A CRUD operation is offered with Mock result.
+
+# Topics covered
+- Basic implementation of a "Spring Boot" Rest Api
+- Swagger UI for visualizing APIs
+- Error Handling
+- EndPoints Testing
+- Eclipse support
 
 # How to execute:
-## from console
+### from console:
 ./gradlew bootRun
-## from Eclipse
-import Exsistent Gradle project and "Run as Application"
+### from Eclipse:
+import "Existing Gradle project" and "Run Application"
+
+# End Points:
+http://localhost:8080/forex/api/..
 
 # API documentation:
 http://localhost:8080/forex/api/swagger-ui.html
