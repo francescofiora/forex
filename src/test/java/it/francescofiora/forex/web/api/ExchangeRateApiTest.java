@@ -15,6 +15,7 @@ import it.francescofiora.forex.dto.ExchangeRateType;
 import it.francescofiora.forex.dto.ExchangeRatesRq;
 import it.francescofiora.forex.dto.ExchangeRatesRs;
 import it.francescofiora.forex.service.ExchangeRateService;
+import it.francescofiora.forex.web.errors.NotFoundException;
 
 import java.net.URI;
 
@@ -30,51 +31,57 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(controllers = ExchangeRateApi.class)
 public class ExchangeRateApiTest {
 
-  private static final String CODE = "CODE";
-  private static final String EXCHANGERATES_URI = "/exchangerates";
-  private static final String EXCHANGERATES_ID_URI = "/exchangerates/{id}";
-  
-  @Autowired
-  private MockMvc mvc;
+	private static final String CODE = "CODE";
+	private static final String EXCHANGERATES_URI = "/exchangerates";
+	private static final String EXCHANGERATES_ID_URI = "/exchangerates/{id}";
+	private static final String BAD_URI = "/exchangerat";
 
-  @MockBean
-  private ExchangeRateService exchangeRateService;
+	@Autowired
+	private MockMvc mvc;
 
-  @Autowired
-  private ObjectMapper mapper;
-  
-  @Test
-  public void testAddExchangeRates() throws Exception {
-    mvc.perform(post(new URI(EXCHANGERATES_URI))
-        .contentType(APPLICATION_JSON)
-        .content(mapper.writeValueAsString(new ExchangeRatesRq())))
-        .andExpect(status().isCreated());
-  }
+	@MockBean
+	private ExchangeRateService exchangeRateService;
 
-  @Test
-  public void testSearchExchangeRates() throws Exception {
-    given(exchangeRateService.searchExchangeRates(anyString(), anyString(), anyString(), anyString(),
-        anyInt(), anyInt()))
-      .willReturn(new ExchangeRatesRs());
+	@Autowired
+	private ObjectMapper mapper;
 
-    mvc.perform(get(EXCHANGERATES_URI))
-      .andExpect(status().isOk());
-  } 
+	@Test
+	public void testAddExchangeRates() throws Exception {
+		mvc.perform(post(new URI(EXCHANGERATES_URI)).contentType(APPLICATION_JSON)
+				.content(mapper.writeValueAsString(new ExchangeRatesRq()))).andExpect(status().isCreated());
+	}
 
-  @Test
-  public void testSearchExchangeRate() throws Exception {
-    given(exchangeRateService.searchExchangeRate(anyString()))
-      .willReturn(new ExchangeRateType());
+	@Test
+	public void testSearchExchangeRates() throws Exception {
+		given(
+				exchangeRateService.searchExchangeRates(anyString(), anyString(), anyString(), anyString(), anyInt(), anyInt()))
+						.willReturn(new ExchangeRatesRs());
 
-    mvc.perform(get(EXCHANGERATES_ID_URI, CODE))
-      .andExpect(status().isOk());
-  } 
+		mvc.perform(get(EXCHANGERATES_URI)).andExpect(status().isOk());
+	}
 
-  @Test
-  public void testUpdateExchangeRates() throws Exception {
-    mvc.perform(put(new URI(EXCHANGERATES_URI))
-        .contentType(APPLICATION_JSON)
-        .content(mapper.writeValueAsString(new ExchangeRatesRq())))
-        .andExpect(status().isCreated());
-  } 
+	@Test
+	public void testSearchExchangeRate() throws Exception {
+		given(exchangeRateService.searchExchangeRate(anyString())).willReturn(new ExchangeRateType());
+
+		mvc.perform(get(EXCHANGERATES_ID_URI, CODE)).andExpect(status().isOk());
+	}
+
+	@Test()
+	public void testSearchExchangeRateNotFound() throws Exception {
+		given(exchangeRateService.searchExchangeRate(CODE)).willThrow(NotFoundException.class);
+
+		mvc.perform(get(EXCHANGERATES_ID_URI, CODE)).andExpect(status().isNotFound());
+	}
+
+	@Test
+	public void testUpdateExchangeRates() throws Exception {
+		mvc.perform(put(new URI(EXCHANGERATES_URI)).contentType(APPLICATION_JSON)
+				.content(mapper.writeValueAsString(new ExchangeRatesRq()))).andExpect(status().isCreated());
+	}
+
+	@Test()
+	public void testSearchExchangeRateWrongPath() throws Exception {
+		mvc.perform(get(BAD_URI, CODE)).andExpect(status().isNotFound());
+	}
 }

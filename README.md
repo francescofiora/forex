@@ -1,6 +1,6 @@
 # forex
 Simple (Spring Boot + OpenApi) Rest Api project.
-For semplicity, a CRUD operation is offered with Mock result.
+For simplicity, a CRUD operation is offered with Mock result.
 
 # How to execute:
 ## from console
