@@ -56,7 +56,8 @@ public class ExchangeRateApi {
 	@Operation(summary = "searches exchange rate by 'exchangerateId'", description = "searches exchange rate by 'exchangerateId'", tags = { "forex" })
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "search results matching criteria", content = @Content(schema = @Schema(implementation = ExchangeRateType.class))),
-			@ApiResponse(responseCode = "400", description = "bad input parameter") })
+			@ApiResponse(responseCode = "400", description = "bad input parameter"),
+			@ApiResponse(responseCode = "404", description = "not found") })
 	@GetMapping(value = "/exchangerates/{exchangerateId}", produces = { "application/json" })
 	ResponseEntity<?> searchExchangeRate(
 			@Parameter(description = "ID of the exchange rate to get", required = true, example = "EUR-USD-2018-11-17T161203625Z") @PathVariable("exchangerateId") String exchangerateId) {
@@ -81,7 +82,8 @@ public class ExchangeRateApi {
 
 	@Operation(summary = "updates exchange rates", description = "updates exchange rates to the system", tags = { "forex" })
 	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "items updated"),
-			@ApiResponse(responseCode = "400", description = "invalid input, object invalid") })
+			@ApiResponse(responseCode = "400", description = "invalid input, object invalid"),
+			@ApiResponse(responseCode = "404", description = "not found") })
 	@PutMapping(value = "/exchangerates", produces = { "application/json" }, consumes = { "application/json" })
 	ResponseEntity<Void> updateExchangeRates(
 			@Parameter(description = "updates list of exchange rate") @Valid @RequestBody ExchangeRatesRq exchangeRatesRq) {
