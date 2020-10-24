@@ -14,17 +14,17 @@ import javax.validation.Valid;
  * ExchangeRatesRs
  */
 @Validated
-public class ExchangeRatesRs   {
+public class ExchangeRatesRs {
 
-	@Schema(example = "1")
+  @Schema(example = "1")
   @JsonProperty("page")
   private Integer page = null;
 
-	@Schema(example = "1")
+  @Schema(example = "1")
   @JsonProperty("item")
   private Integer item = null;
 
-	@Schema(example = "1")
+  @Schema(example = "1")
   @JsonProperty("totalItem")
   private Integer totalItem = null;
 
@@ -39,8 +39,9 @@ public class ExchangeRatesRs   {
 
   /**
    * Get page
+   * 
    * @return page
-  **/
+   **/
   public Integer getPage() {
     return page;
   }
@@ -56,8 +57,9 @@ public class ExchangeRatesRs   {
 
   /**
    * Get item
+   * 
    * @return item
-  **/
+   **/
   public Integer getItem() {
     return item;
   }
@@ -73,8 +75,9 @@ public class ExchangeRatesRs   {
 
   /**
    * Get totalItem
+   * 
    * @return totalItem
-  **/
+   **/
   public Integer getTotalItem() {
     return totalItem;
   }
@@ -98,8 +101,9 @@ public class ExchangeRatesRs   {
 
   /**
    * Get exchangeRates
+   * 
    * @return exchangeRates
-  **/
+   **/
   @Valid
   public List<ExchangeRateType> getExchangeRates() {
     return exchangeRates;
@@ -119,10 +123,10 @@ public class ExchangeRatesRs   {
       return false;
     }
     ExchangeRatesRs exchangeRatesRs = (ExchangeRatesRs) o;
-    return Objects.equals(this.page, exchangeRatesRs.page) &&
-        Objects.equals(this.item, exchangeRatesRs.item) &&
-        Objects.equals(this.totalItem, exchangeRatesRs.totalItem) &&
-        Objects.equals(this.exchangeRates, exchangeRatesRs.exchangeRates);
+    return Objects.equals(this.page, exchangeRatesRs.page)
+        && Objects.equals(this.item, exchangeRatesRs.item)
+        && Objects.equals(this.totalItem, exchangeRatesRs.totalItem)
+        && Objects.equals(this.exchangeRates, exchangeRatesRs.exchangeRates);
   }
 
   @Override
@@ -134,7 +138,7 @@ public class ExchangeRatesRs   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExchangeRatesRs {\n");
-    
+
     sb.append("    page: ").append(toIndentedString(page)).append("\n");
     sb.append("    item: ").append(toIndentedString(item)).append("\n");
     sb.append("    totalItem: ").append(toIndentedString(totalItem)).append("\n");
@@ -144,8 +148,7 @@ public class ExchangeRatesRs   {
   }
 
   /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
+   * Convert the given object to string with each line indented by 4 spaces (except the first line).
    */
   private String toIndentedString(java.lang.Object o) {
     if (o == null) {

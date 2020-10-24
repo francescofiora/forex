@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalControllerExceptionHandler {
 
-	@ExceptionHandler(Exception.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ResponseEntity<Map<String, Object>> handleConnversion(RuntimeException ex) {
-		Map<String, Object> map = Collections.singletonMap("error", ex.getMessage());
-		return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
-	}
+  @ExceptionHandler(Exception.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public ResponseEntity<Map<String, Object>> handleConnversion(RuntimeException ex) {
+    Map<String, Object> map = Collections.singletonMap("error", ex.getMessage());
+    return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+  }
 
-	@ExceptionHandler(NotFoundException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public ResponseEntity<Map<String, Object>> handleItemNotFound(RuntimeException ex) {
-		Map<String, Object> map = Collections.singletonMap("error", ex.getMessage());
-		return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
-	}
+  @ExceptionHandler(NotFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public ResponseEntity<Map<String, Object>> handleItemNotFound(RuntimeException ex) {
+    Map<String, Object> map = Collections.singletonMap("error", ex.getMessage());
+    return new ResponseEntity<>(map, HttpStatus.NOT_FOUND);
+  }
 }

@@ -8,12 +8,14 @@ public interface ExchangeRateService {
 
   /**
    * add ExchangeRate.
+   * 
    * @param exchangeRatesRq ExchangeRatesRq
    */
   void addExchangeRates(ExchangeRatesRq exchangeRatesRq);
 
   /**
    * return ExchangeRate by id.
+   * 
    * @param exchangerateId
    * @return
    */
@@ -21,6 +23,7 @@ public interface ExchangeRateService {
 
   /**
    * search ExchangeRate.
+   * 
    * @param dataFrom
    * @param dataTo
    * @param valutaFrom
@@ -34,6 +37,7 @@ public interface ExchangeRateService {
 
   /**
    * update ExchangeRate.
+   * 
    * @param forexDataRq ExchangeRatesRq
    */
   void updateExchangeRates(ExchangeRatesRq forexDataRq);

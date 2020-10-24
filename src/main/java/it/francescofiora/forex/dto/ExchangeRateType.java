@@ -7,15 +7,18 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 /**
  * ExchangeRateType
  */
 @Validated
-public class ExchangeRateType   {
+public class ExchangeRateType {
 
-  @Schema(description = "Unique identifier", example = "EUR-USD-2018-11-17T161203625Z", required = true)
+  @Schema(description = "Unique identifier", example = "EUR-USD-2018-11-17T161203625Z",
+      required = true)
   @JsonProperty("id")
   private String id = null;
 
@@ -46,9 +49,10 @@ public class ExchangeRateType   {
 
   /**
    * Get id
+   * 
    * @return id
-  **/
-  @NotNull
+   **/
+  @NotEmpty
   @Valid
   public String getId() {
     return id;
@@ -65,9 +69,10 @@ public class ExchangeRateType   {
 
   /**
    * Get uri
+   * 
    * @return uri
-  **/
-  @NotNull
+   **/
+  @NotEmpty
   public String getUri() {
     return uri;
   }
@@ -83,9 +88,10 @@ public class ExchangeRateType   {
 
   /**
    * Get valutaFrom
+   * 
    * @return valutaFrom
-  **/
-  @NotNull
+   **/
+  @NotEmpty
   public String getValutaFrom() {
     return valutaFrom;
   }
@@ -101,9 +107,10 @@ public class ExchangeRateType   {
 
   /**
    * Get valutaTo
+   * 
    * @return valutaTo
-  **/
-  @NotNull
+   **/
+  @NotEmpty
   public String getValutaTo() {
     return valutaTo;
   }
@@ -119,9 +126,11 @@ public class ExchangeRateType   {
 
   /**
    * Get exchangeRate
+   * 
    * @return exchangeRate
-  **/
+   **/
   @NotNull
+  @Positive
   public Double getExchangeRate() {
     return exchangeRate;
   }
@@ -137,9 +146,10 @@ public class ExchangeRateType   {
 
   /**
    * Get exchangeData
+   * 
    * @return exchangeData
-  **/
-  @NotNull
+   **/
+  @NotEmpty
   @Valid
   public String getExchangeData() {
     return exchangeData;
@@ -159,12 +169,12 @@ public class ExchangeRateType   {
       return false;
     }
     ExchangeRateType exchangeRateType = (ExchangeRateType) o;
-    return Objects.equals(this.id, exchangeRateType.id) &&
-        Objects.equals(this.uri, exchangeRateType.uri) &&
-        Objects.equals(this.valutaFrom, exchangeRateType.valutaFrom) &&
-        Objects.equals(this.valutaTo, exchangeRateType.valutaTo) &&
-        Objects.equals(this.exchangeRate, exchangeRateType.exchangeRate) &&
-        Objects.equals(this.exchangeData, exchangeRateType.exchangeData);
+    return Objects.equals(this.id, exchangeRateType.id)
+        && Objects.equals(this.uri, exchangeRateType.uri)
+        && Objects.equals(this.valutaFrom, exchangeRateType.valutaFrom)
+        && Objects.equals(this.valutaTo, exchangeRateType.valutaTo)
+        && Objects.equals(this.exchangeRate, exchangeRateType.exchangeRate)
+        && Objects.equals(this.exchangeData, exchangeRateType.exchangeData);
   }
 
   @Override
@@ -176,7 +186,7 @@ public class ExchangeRateType   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExchangeRateType {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("    valutaFrom: ").append(toIndentedString(valutaFrom)).append("\n");
@@ -188,8 +198,7 @@ public class ExchangeRateType   {
   }
 
   /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
+   * Convert the given object to string with each line indented by 4 spaces (except the first line).
    */
   private String toIndentedString(java.lang.Object o) {
     if (o == null) {

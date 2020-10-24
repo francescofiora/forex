@@ -19,33 +19,32 @@ import io.swagger.v3.oas.annotations.Hidden;
 /**
  * Capture and manage all Exception.
  * 
- * @author francesco.fiora
  */
 @Controller
 @Hidden
 public class CustomErrorController extends AbstractErrorController {
-	private static final String PATH = "/error";
+  private static final String PATH = "/error";
 
-	public CustomErrorController(ErrorAttributes errorAttributes) {
-		super(errorAttributes);
-	}
+  public CustomErrorController(ErrorAttributes errorAttributes) {
+    super(errorAttributes);
+  }
 
-	/**
-	 * return the error in JSON format.
-	 * 
-	 * @param request rest request
-	 * @return handle Error
-	 */
-	@RequestMapping(value = PATH, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> handleError(HttpServletRequest request) {
-		HttpStatus status = super.getStatus(request);
-		Map<String, Object> map = super.getErrorAttributes(request, ErrorAttributeOptions.defaults());
-		return new ResponseEntity<>(map, status);
-	}
+  /**
+   * return the error in JSON format.
+   * 
+   * @param request rest request
+   * @return handle Error
+   */
+  @RequestMapping(value = PATH, produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public ResponseEntity<Map<String, Object>> handleError(HttpServletRequest request) {
+    HttpStatus status = super.getStatus(request);
+    Map<String, Object> map = super.getErrorAttributes(request, ErrorAttributeOptions.defaults());
+    return new ResponseEntity<>(map, status);
+  }
 
-	@Override
-	public String getErrorPath() {
-		return PATH;
-	}
+  @Override
+  public String getErrorPath() {
+    return PATH;
+  }
 }
