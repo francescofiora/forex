@@ -72,52 +72,64 @@ public class ExchangeRateApiTest {
     ExchangeRatesRq request = new ExchangeRatesRq();
     addExchangeRatesBadRequest(request);
 
-    // empty ExchangeRateType.ExchangeData
+    // ExchangeRateType.ExchangeData
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setExchangeData("");
     addExchangeRatesBadRequest(request);
 
-    // null ExchangeRateType.ExchangeData
+    request = createExchangeRatesRq();
+    request.getExchangeRates().get(0).setExchangeData(" ");
+    addExchangeRatesBadRequest(request);
+
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setExchangeData(null);
     addExchangeRatesBadRequest(request);
 
-    // null ExchangeRateType.ExchangeRate
+    // ExchangeRateType.ExchangeRate
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setExchangeRate(null);
     addExchangeRatesBadRequest(request);
 
-    // zero ExchangeRateType.ExchangeRate
+    // ExchangeRateType.ExchangeRate
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setExchangeRate(0.0);
     addExchangeRatesBadRequest(request);
 
-    // empty ExchangeRateType.Uri
+    // ExchangeRateType.Uri
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setUri("");
     addExchangeRatesBadRequest(request);
 
-    // null ExchangeRateType.Uri
+    request = createExchangeRatesRq();
+    request.getExchangeRates().get(0).setUri("  ");
+    addExchangeRatesBadRequest(request);
+
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setUri(null);
     addExchangeRatesBadRequest(request);
 
-    // empty ExchangeRateType.ValutaFrom
+    // ExchangeRateType.ValutaFrom
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setValutaFrom("");
     addExchangeRatesBadRequest(request);
 
-    // null ExchangeRateType.ValutaFrom
+    request = createExchangeRatesRq();
+    request.getExchangeRates().get(0).setValutaFrom("  ");
+    addExchangeRatesBadRequest(request);
+
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setValutaFrom(null);
     addExchangeRatesBadRequest(request);
 
-    // empty ExchangeRateType.ValutaTo
+    // ExchangeRateType.ValutaTo
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setValutaTo("");
     addExchangeRatesBadRequest(request);
 
-    // null ExchangeRateType.ValutaTo
+    request = createExchangeRatesRq();
+    request.getExchangeRates().get(0).setValutaTo("  ");
+    addExchangeRatesBadRequest(request);
+
     request = createExchangeRatesRq();
     request.getExchangeRates().get(0).setValutaTo(null);
     addExchangeRatesBadRequest(request);

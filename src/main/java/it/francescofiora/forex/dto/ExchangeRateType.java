@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -72,7 +73,7 @@ public class ExchangeRateType {
    * 
    * @return uri
    **/
-  @NotEmpty
+  @NotBlank
   public String getUri() {
     return uri;
   }
@@ -91,7 +92,7 @@ public class ExchangeRateType {
    * 
    * @return valutaFrom
    **/
-  @NotEmpty
+  @NotBlank
   public String getValutaFrom() {
     return valutaFrom;
   }
@@ -110,7 +111,7 @@ public class ExchangeRateType {
    * 
    * @return valutaTo
    **/
-  @NotEmpty
+  @NotBlank
   public String getValutaTo() {
     return valutaTo;
   }
@@ -149,7 +150,7 @@ public class ExchangeRateType {
    * 
    * @return exchangeData
    **/
-  @NotEmpty
+  @NotBlank
   @Valid
   public String getExchangeData() {
     return exchangeData;
