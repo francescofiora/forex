@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -15,7 +14,6 @@ import javax.validation.constraints.Positive;
 /**
  * ExchangeRateType
  */
-@Validated
 public class ExchangeRateType {
 
   @Schema(description = "Unique identifier", example = "EUR-USD-2018-11-17T161203625Z",
