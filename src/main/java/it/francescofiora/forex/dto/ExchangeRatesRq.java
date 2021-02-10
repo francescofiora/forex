@@ -4,7 +4,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import lombok.Getter;
+import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
@@ -13,10 +14,13 @@ import javax.validation.constraints.*;
 /**
  * ExchangeRatesRq
  */
+@Getter
+@Setter
 public class ExchangeRatesRq {
 
   @Schema(required = true)
   @JsonProperty("exchangeRates")
+  @NotEmpty
   @Valid
   private List<ExchangeRateType> exchangeRates = new ArrayList<>();
 
@@ -28,21 +32,6 @@ public class ExchangeRatesRq {
   public ExchangeRatesRq addExchangeRateItem(ExchangeRateType exchangeRateItem) {
     this.exchangeRates.add(exchangeRateItem);
     return this;
-  }
-
-  /**
-   * Get exchangeRates
-   * 
-   * @return exchangeRates
-   **/
-  @NotEmpty
-  @Valid
-  public List<ExchangeRateType> getExchangeRates() {
-    return exchangeRates;
-  }
-
-  public void setExchangeRates(List<ExchangeRateType> exchangeRates) {
-    this.exchangeRates = exchangeRates;
   }
 
   @Override

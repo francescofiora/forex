@@ -1,9 +1,10 @@
 plugins {
 	id 'java'
 	id 'eclipse-wtp'
-	id 'org.springframework.boot' version '2.3.1.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'war'
+	id "io.freefair.lombok" version "5.3.0"
 }
 
 sourceCompatibility = 1.8
@@ -42,6 +43,8 @@ dependencies {
 	implementation "org.springdoc:springdoc-openapi-ui:$springdocOpenapiVersion"
   
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"
+	testImplementation 'com.openpojo:openpojo:0.8.3'
 }
 
 sourceSets {

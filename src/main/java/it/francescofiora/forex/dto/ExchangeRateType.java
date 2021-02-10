@@ -4,7 +4,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import lombok.Getter;
+import lombok.Setter;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -14,31 +15,42 @@ import javax.validation.constraints.Positive;
 /**
  * ExchangeRateType
  */
+@Getter
+@Setter
 public class ExchangeRateType {
 
   @Schema(description = "Unique identifier", example = "EUR-USD-2018-11-17T161203625Z",
       required = true)
   @JsonProperty("id")
+  @NotEmpty
+  @Valid
   private String id = null;
 
   @Schema(example = "/exchangerates/EUR-USD-2018-11-17T161203625Z", required = true)
   @JsonProperty("uri")
+  @NotBlank
   private String uri = null;
 
   @Schema(example = "EUR", required = true)
   @JsonProperty("valutaFrom")
+  @NotBlank
   private String valutaFrom = null;
 
   @Schema(example = "USD", required = true)
   @JsonProperty("valutaTo")
+  @NotBlank
   private String valutaTo = null;
 
   @Schema(example = "1.14193", required = true)
   @JsonProperty("exchangeRate")
+  @NotNull
+  @Positive
   private Double exchangeRate = null;
 
   @Schema(example = "2018-11-17T16:12:03625Z", required = true)
   @JsonProperty("exchangeData")
+  @NotBlank
+  @Valid
   private String exchangeData = null;
 
   public ExchangeRateType id(String id) {
@@ -46,38 +58,9 @@ public class ExchangeRateType {
     return this;
   }
 
-  /**
-   * Get id
-   * 
-   * @return id
-   **/
-  @NotEmpty
-  @Valid
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
   public ExchangeRateType uri(String uri) {
     this.uri = uri;
     return this;
-  }
-
-  /**
-   * Get uri
-   * 
-   * @return uri
-   **/
-  @NotBlank
-  public String getUri() {
-    return uri;
-  }
-
-  public void setUri(String uri) {
-    this.uri = uri;
   }
 
   public ExchangeRateType valutaFrom(String valutaFrom) {
@@ -85,37 +68,9 @@ public class ExchangeRateType {
     return this;
   }
 
-  /**
-   * Get valutaFrom
-   * 
-   * @return valutaFrom
-   **/
-  @NotBlank
-  public String getValutaFrom() {
-    return valutaFrom;
-  }
-
-  public void setValutaFrom(String valutaFrom) {
-    this.valutaFrom = valutaFrom;
-  }
-
   public ExchangeRateType valutaTo(String valutaTo) {
     this.valutaTo = valutaTo;
     return this;
-  }
-
-  /**
-   * Get valutaTo
-   * 
-   * @return valutaTo
-   **/
-  @NotBlank
-  public String getValutaTo() {
-    return valutaTo;
-  }
-
-  public void setValutaTo(String valutaTo) {
-    this.valutaTo = valutaTo;
   }
 
   public ExchangeRateType exchangeRate(Double exchangeRate) {
@@ -123,41 +78,10 @@ public class ExchangeRateType {
     return this;
   }
 
-  /**
-   * Get exchangeRate
-   * 
-   * @return exchangeRate
-   **/
-  @NotNull
-  @Positive
-  public Double getExchangeRate() {
-    return exchangeRate;
-  }
-
-  public void setExchangeRate(Double exchangeRate) {
-    this.exchangeRate = exchangeRate;
-  }
-
   public ExchangeRateType exchangeData(String exchangeData) {
     this.exchangeData = exchangeData;
     return this;
   }
-
-  /**
-   * Get exchangeData
-   * 
-   * @return exchangeData
-   **/
-  @NotBlank
-  @Valid
-  public String getExchangeData() {
-    return exchangeData;
-  }
-
-  public void setExchangeData(String exchangeData) {
-    this.exchangeData = exchangeData;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {

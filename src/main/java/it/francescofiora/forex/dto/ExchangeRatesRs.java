@@ -4,7 +4,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+import lombok.Getter;
+import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
@@ -12,6 +13,8 @@ import javax.validation.Valid;
 /**
  * ExchangeRatesRs
  */
+@Getter
+@Setter
 public class ExchangeRatesRs {
 
   @Schema(example = "1")
@@ -35,53 +38,14 @@ public class ExchangeRatesRs {
     return this;
   }
 
-  /**
-   * Get page
-   * 
-   * @return page
-   **/
-  public Integer getPage() {
-    return page;
-  }
-
-  public void setPage(Integer page) {
-    this.page = page;
-  }
-
   public ExchangeRatesRs item(Integer item) {
     this.item = item;
     return this;
   }
 
-  /**
-   * Get item
-   * 
-   * @return item
-   **/
-  public Integer getItem() {
-    return item;
-  }
-
-  public void setItem(Integer item) {
-    this.item = item;
-  }
-
   public ExchangeRatesRs totalItem(Integer totalItem) {
     this.totalItem = totalItem;
     return this;
-  }
-
-  /**
-   * Get totalItem
-   * 
-   * @return totalItem
-   **/
-  public Integer getTotalItem() {
-    return totalItem;
-  }
-
-  public void setTotalItem(Integer totalItem) {
-    this.totalItem = totalItem;
   }
 
   public ExchangeRatesRs exchangeRates(List<ExchangeRateType> exchangeRates) {
@@ -96,21 +60,6 @@ public class ExchangeRatesRs {
     this.exchangeRates.add(exchangeRatesItem);
     return this;
   }
-
-  /**
-   * Get exchangeRates
-   * 
-   * @return exchangeRates
-   **/
-  @Valid
-  public List<ExchangeRateType> getExchangeRates() {
-    return exchangeRates;
-  }
-
-  public void setExchangeRates(List<ExchangeRateType> exchangeRates) {
-    this.exchangeRates = exchangeRates;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -155,4 +104,3 @@ public class ExchangeRatesRs {
     return o.toString().replace("\n", "\n    ");
   }
 }
-
